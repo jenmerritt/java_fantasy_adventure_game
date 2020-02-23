@@ -13,6 +13,7 @@ public class WaterBeast extends Beast {
     public WaterBeast(String name, ArrayList<WaterAbility> abilities) {
         super(name);
         this.abilities = abilities;
+        this.type = "WaterBeast";
     }
 
     public ArrayList<WaterAbility> getAbilities() {

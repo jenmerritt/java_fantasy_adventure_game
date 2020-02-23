@@ -6,7 +6,7 @@ import items.Item;
 
 import java.util.ArrayList;
 
-public class Player extends Character {
+public class Player extends Character implements IFight {
 
     private ArrayList<Item> items;
 
@@ -29,16 +29,9 @@ public class Player extends Character {
         }
     }
 
-    public void fight(Enemy enemy){
-        // enemy should choose beast
-        enemy.changeChosenBeast(0);
-        Beast enemyBeast = enemy.getChosenBeast();
-        // Ask user which beast they want
-        changeChosenBeast(0);
-        // Ask user which ability they want to use
-        Ability ability = chooseAttackMethod(0);
-        // get chosen beast to attack
-        getChosenBeast().attack(enemyBeast, ability);
+    public void fight(IFight opponent){
+        Beast chosenBeast = getChosenBeast();
+        chosenBeast.attack(opponent.getChosenBeast(), chosenBeast.engageAbility(0));
     }
 
 }

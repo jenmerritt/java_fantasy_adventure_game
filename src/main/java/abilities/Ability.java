@@ -23,7 +23,6 @@ public abstract class Ability implements IEffect {
     }
 
     public void effectHealth(Beast beast) {
-        int newHealth = beast.getHealth() - this.effect;
-        beast.setHealth(newHealth);
+        beast.setHealth(beast.getHealth() - this.effect);
     }
 }

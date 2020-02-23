@@ -13,6 +13,7 @@ public class GrassBeast extends Beast {
     public GrassBeast(String name, ArrayList<GrassAbility> abilities) {
         super(name);
         this.abilities = abilities;
+        this.type = "GrassBeast";
     }
 
     public ArrayList<GrassAbility> getAbilities() {

@@ -13,6 +13,7 @@ public class FireBeast extends Beast {
     public FireBeast(String name, ArrayList<FireAbility> abilities) {
         super(name);
         this.abilities = abilities;
+        this.type = "FireBeast";
     }
 
     public ArrayList<FireAbility> getAbilities() {

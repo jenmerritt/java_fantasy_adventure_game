@@ -11,12 +11,10 @@ public class ElectricAbility extends Ability {
     @Override
     public void effectHealth(Beast beast) {
         int beastHealth = beast.getHealth();
-        if (beast.getClass().getName() == "WaterBeast") {
-            beast.setHealth(beastHealth);
+        if (beast.getType() == "WaterBeast") {
+            beast.setHealth(beastHealth - (getEffect()*2));
         } else {
             beast.setHealth(beastHealth - getEffect());
         }
     }
-
-
 }

@@ -39,7 +39,7 @@ public abstract class Character {
         return this.chosenBeast;
     }
 
-    public void changeChosenBeast(int index){
+    public void chooseBeast(int index){
         this.chosenBeast = this.beasts.get(index);
     }
 

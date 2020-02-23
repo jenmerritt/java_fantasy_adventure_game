@@ -12,6 +12,7 @@ public class ElectricBeast extends Beast {
     public ElectricBeast(String name, ArrayList<ElectricAbility> abilities) {
         super(name);
         this.abilities = abilities;
+        this.type = "ElectricBeast";
     }
 
     public ArrayList<ElectricAbility> getAbilities() {

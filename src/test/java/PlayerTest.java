@@ -5,7 +5,7 @@ import beasts.Beast;
 import beasts.ElectricBeast;
 import beasts.FireBeast;
 import beasts.WaterBeast;
-import characters.Enemy;
+import characters.Boss;
 import characters.Player;
 import items.Ether;
 import items.MaxEther;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class PlayerTest {
 
     private Player ash;
-    private Enemy rocket;
+    private Boss rocket;
     private ElectricAbility thunderBolt;
     private ElectricBeast pikachu;
     private ArrayList<ElectricAbility> pikachuAbilities;
@@ -45,7 +45,7 @@ public class PlayerTest {
         pikachu = new ElectricBeast("Pikachu", pikachuAbilities);
         charmander = new FireBeast("Charmander", charmanderAbilities);
         ash = new Player("Ash", ashBeasts);
-        rocket = new Enemy("Team Rocket", rocketBeasts);
+        rocket = new Boss("Team Rocket", rocketBeasts);
         rocketBeasts.add(charmander);
         ashBeasts.add(pikachu);
         ether = new Ether();
@@ -107,20 +107,22 @@ public class PlayerTest {
     }
 
     @Test
-    public void chosen_beast_is_first_in_list_by_default(){
-        assertEquals(pikachu, ash.getChosenBeast());
+    public void chosen_beast_starts_null(){
+        assertEquals(null, ash.getChosenBeast());
     }
 
     @Test
     public void can_update_chosen_beast(){
         WaterBeast squirtle = new WaterBeast("Squirtle", new ArrayList<WaterAbility>());
         ash.addBeast(squirtle);
-        ash.changeChosenBeast(1);
+        ash.chooseBeast(1);
         assertEquals(squirtle, ash.getChosenBeast());
     }
 
     @Test
-    public void can_fight_enemy_and_reduce_health_of_beast(){
+    public void can_fight_enemy_and_reduce_health_of_their_beast(){
+        rocket.chooseBeast(0);
+        ash.chooseBeast(0);
         ash.fight(rocket);
         assertEquals(75, charmander.getHealth());
     }
