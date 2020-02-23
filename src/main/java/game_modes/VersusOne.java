@@ -11,13 +11,11 @@ public class VersusOne implements Winnable {
 
     private Arena stadium;
     private Player player;
-    private boolean hasBeenWon;
     private IFight winner;
 
     public VersusOne(Arena stadium, Player player) {
         this.stadium = stadium;
         this.player = player;
-        this.hasBeenWon = false;
         this.winner = null;
     }
 
@@ -33,8 +31,8 @@ public class VersusOne implements Winnable {
         return this.stadium.getBoss();
     }
 
-    public boolean getHasBeenWon(){
-        return this.hasBeenWon;
+    public IFight getWinner() {
+        return this.winner;
     }
 
     public void setupGame() {
@@ -47,30 +45,25 @@ public class VersusOne implements Winnable {
         player.chooseBeast(0);
     }
 
-    public void playRound(IFight player, IFight boss) {
-        player.fight(boss);
-        boss.fight(player);
-//        if(boss.getChosenBeast().getHealth() > 0){
-//        }
-//        else {
-//            this.hasBeenWon = true;
-//            this.winner = player;
-//        }
-//        if(player.getChosenBeast().getHealth() == 0){
-//            this.hasBeenWon = true;
-//            this.winner = boss;
-//        }
+    public boolean playerStillAlive(IFight player){
+        if(player.getChosenBeastHealth() > 0){
+            return true;
+        }
+        else return false;
     }
 
-    public boolean checkWin() {
-        if(this.hasBeenWon == true){
-            return true;
-        } else {
-            return false;
+
+    public void playRound(IFight player, IFight boss){
+        while(playerStillAlive(player) && playerStillAlive(boss)){
+            player.fight(boss);
+            player.fight(player);
+        }
+        if(!playerStillAlive(player)){
+            this.winner = boss;
+        }
+        else if(!playerStillAlive(boss)){
+            this.winner = player;
         }
     }
 
-    public IFight getWinner() {
-        return this.getWinner();
-    }
 }

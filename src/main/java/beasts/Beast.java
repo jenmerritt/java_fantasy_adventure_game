@@ -31,7 +31,9 @@ public abstract class Beast {
     }
 
     public void setHealth(int newHealth){
-        this.health = newHealth;
+        if(newHealth < 0){
+            this.health = 0;
+        } else this.health = newHealth;
     }
 
     public void attack(Beast enemyBeast, Ability ability){

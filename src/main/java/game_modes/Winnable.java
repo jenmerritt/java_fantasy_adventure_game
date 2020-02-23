@@ -12,7 +12,5 @@ public interface Winnable {
 
      void playRound(IFight player, IFight boss);
 
-     boolean checkWin();
-
      IFight getWinner();
 }

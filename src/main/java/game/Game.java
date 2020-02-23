@@ -1,14 +1,13 @@
 package game;
 
+import characters.IFight;
 import game_modes.Winnable;
 
 public class Game {
 
-    public void playGame(Winnable gameMode){
+        public void playGame(Winnable gameMode){
         gameMode.setupGame();
-        while(gameMode.checkWin() == false){
-            gameMode.playRound(gameMode.getPlayer(), gameMode.getBoss());
-        }
+        gameMode.playRound(gameMode.getPlayer(), gameMode.getBoss());
     }
 
 }

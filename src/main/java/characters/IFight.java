@@ -9,5 +9,6 @@ public interface IFight {
     ArrayList<Beast> getBeasts();
     Beast getChosenBeast();
     void chooseBeast(int index);
+    int getChosenBeastHealth();
 
 }

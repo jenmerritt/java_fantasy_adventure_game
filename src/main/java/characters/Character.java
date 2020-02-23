@@ -47,4 +47,8 @@ public abstract class Character {
         return this.chosenBeast.engageAbility(index);
     }
 
+    public int getChosenBeastHealth() {
+        return this.chosenBeast.getHealth();
+    }
+
 }
