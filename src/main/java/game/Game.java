@@ -1,13 +1,18 @@
 package game;
 
-import characters.IFight;
-import game_modes.Winnable;
+import game_modes.IBattle;
+import game_modes.Story;
 
 public class Game {
 
-        public void playGame(Winnable gameMode){
+    public void playVersusMode(IBattle gameMode){
         gameMode.setupGame();
         gameMode.playRound(gameMode.getPlayer(), gameMode.getBoss());
+    }
+
+    public void playStoryMode(Story story){
+        story.setupLevels();
+        story.playStory();
     }
 
 }

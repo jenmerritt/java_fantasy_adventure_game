@@ -7,7 +7,10 @@ import beasts.WaterBeast;
 import characters.Boss;
 import characters.Player;
 import game.Game;
+import game_modes.Story;
 import game_modes.VersusOne;
+import items.Ether;
+import items.MaxEther;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +33,9 @@ public class GameTest {
     private Stadium stadium;
     private VersusOne versusOne;
     private Game game;
+    private Ether ether;
+    private MaxEther maxEther;
+    private Story story;
 
     @Before
     public void before() {
@@ -50,11 +56,14 @@ public class GameTest {
         stadium = new Stadium(rocket);
         versusOne = new VersusOne(stadium, ash);
         game = new Game();
+        ether = new Ether();
+        maxEther = new MaxEther();
+        story = new Story(ash);
     }
 
     @Test
     public void can_get_correct_winner_of_versus_one_game(){
-        game.playGame(versusOne);
+        game.playVersusMode(versusOne);
         assertEquals(ash, versusOne.getWinner());
     }
 }

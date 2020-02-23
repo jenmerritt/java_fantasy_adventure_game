@@ -76,7 +76,7 @@ public class VersusOneTest {
         versusOne.setupGame();
         versusOne.playRound(ash, rocket);
         assertEquals(0, charmander.getHealth());
-        assertEquals(40, squirtle.getHealth());
+        assertEquals(85, squirtle.getHealth());
     }
 
 }

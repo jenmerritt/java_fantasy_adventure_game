@@ -127,4 +127,25 @@ public class PlayerTest {
         assertEquals(75, charmander.getHealth());
     }
 
+    @Test
+    public void can_heal_chosen_beast_with_item(){
+        ash.addItem(maxEther);
+        rocket.chooseBeast(0);
+        ash.chooseBeast(0);
+        rocket.fight(ash);
+        rocket.fight(ash);
+        ash.healChosenBeastWithItem(0);
+        assertEquals(100, ash.getChosenBeast().getHealth());
+    }
+
+    @Test
+    public void does_not_error_if_no_item(){
+        rocket.chooseBeast(0);
+        ash.chooseBeast(0);
+        rocket.fight(ash);
+        rocket.fight(ash);
+        ash.healChosenBeastWithItem(0);
+        assertEquals(20, ash.getChosenBeast().getHealth());
+    }
+
 }

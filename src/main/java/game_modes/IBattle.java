@@ -2,7 +2,7 @@ package game_modes;
 
 import characters.IFight;
 
-public interface Winnable {
+public interface IBattle {
 
      void setupGame();
 

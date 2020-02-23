@@ -1,6 +1,7 @@
 package beasts;
 
 import abilities.Ability;
+import items.Item;
 
 import java.util.ArrayList;
 import java.util.Collection;

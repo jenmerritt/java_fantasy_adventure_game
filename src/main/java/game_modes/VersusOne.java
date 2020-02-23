@@ -1,13 +1,12 @@
 package game_modes;
 
 import arenas.Arena;
-import characters.Boss;
 import characters.IFight;
 import characters.Player;
 
 import java.util.Collections;
 
-public class VersusOne implements Winnable {
+public class VersusOne implements IBattle {
 
     private Arena stadium;
     private Player player;
@@ -45,18 +44,17 @@ public class VersusOne implements Winnable {
         player.chooseBeast(0);
     }
 
-    public boolean playerStillAlive(IFight player){
-        if(player.getChosenBeastHealth() > 0){
-            return true;
-        }
-        else return false;
+    private boolean playerStillAlive(IFight player){
+        return player.getChosenBeastHealth() > 0;
     }
 
-
     public void playRound(IFight player, IFight boss){
-        while(playerStillAlive(player) && playerStillAlive(boss)){
+        while(playerStillAlive(player) && playerStillAlive(boss)) {
             player.fight(boss);
-            player.fight(player);
+            if (!playerStillAlive(player) || !playerStillAlive(boss)) {
+                break;
+            }
+            boss.fight(player);
         }
         if(!playerStillAlive(player)){
             this.winner = boss;

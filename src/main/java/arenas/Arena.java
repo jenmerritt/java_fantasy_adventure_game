@@ -1,15 +1,18 @@
 package arenas;
 
+import beasts.Beast;
 import characters.Boss;
+
+import java.util.ArrayList;
 
 public abstract class Arena {
 
     protected String name;
-    private Boss boss;
+    protected Boss boss;
 
-    public Arena(Boss boss) {
+    public Arena() {
         this.name = "Arena";
-        this.boss = boss;
+        this.boss = new Boss("Boss", new ArrayList<Beast>());
     }
 
     public String getName() {
@@ -20,5 +23,6 @@ public abstract class Arena {
         return boss;
     }
 
-//    public abstract void setupBoss();
+    public abstract void setupBoss();
+
 }

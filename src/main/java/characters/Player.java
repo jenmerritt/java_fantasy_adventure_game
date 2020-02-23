@@ -29,9 +29,21 @@ public class Player extends Character implements IFight {
         }
     }
 
+    public Item getItem(int index){
+        return items.get(index);
+    }
+
     public void fight(IFight opponent){
         Beast chosenBeast = getChosenBeast();
         chosenBeast.attack(opponent.getChosenBeast(), chosenBeast.engageAbility(0));
+    }
+
+    public void healChosenBeastWithItem(int itemIndex){
+        if(getNumberOfItems() > 0){
+            Item item = getItem(itemIndex);
+            item.effectHealth(getChosenBeast());
+        }
+
     }
 
 }
